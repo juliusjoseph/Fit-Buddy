@@ -412,41 +412,41 @@ export default function Reginfo() {
     }
   };
 
-  const handleNext = async () => {
-    if (!gender) {
-      Alert.alert("Please select your gender");
-      return;
-    }
+  // const handleNext = async () => {
+  //   if (!gender) {
+  //     Alert.alert("Please select your gender");
+  //     return;
+  //   }
 
-    setLoading(true);
+  //   setLoading(true);
 
-    try {
-      // Save all profile data to Supabase
-      const { error } = await supabase
-        .from("profiles")
-        .update({
-          Sex: gender,
-          // date_of_birth: dateOfBirth,
-          // weight: weight ? parseFloat(weight) : null,
-          // height: height ? parseFloat(height) : null,
-        })
-        .eq("id", session.user.id);
+  //   try {
+  //     // Save all profile data to Supabase
+  //     const { error } = await supabase
+  //       .from("profiles")
+  //       .update({
+  //         Sex: gender,
+  //         // date_of_birth: dateOfBirth,
+  //         // weight: weight ? parseFloat(weight) : null,
+  //         // height: height ? parseFloat(height) : null,
+  //       })
+  //       .eq("id", session.user.id);
 
-      if (error) {
-        console.error("Error updating profile:", error);
-        Alert.alert("Error", "Failed to save profile information");
-      } else {
-        console.log("Profile updated successfully");
-        await refreshProfile(); // Refresh the profile data
-        navigation.navigate("Goal");
-      }
-    } catch (error) {
-      console.error("Error saving profile data:", error);
-      Alert.alert("Error", "Failed to save profile information");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     if (error) {
+  //       console.error("Error updating profile:", error);
+  //       Alert.alert("Error", "Failed to save profile information");
+  //     } else {
+  //       console.log("Profile updated successfully");
+  //       await refreshProfile(); // Refresh the profile data
+  //       navigation.navigate("Goal");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error saving profile data:", error);
+  //     Alert.alert("Error", "Failed to save profile information");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const colors = ["#FFE5F1", "#7226FF"];
 
@@ -715,7 +715,7 @@ export default function Reginfo() {
             <View style={{ width: "100%", alignItems: "center" }}>
               <GradientButton
                 title={loading ? "Saving..." : "Next"}
-                onPress={handleNext}
+                onPress={() => navigation.navigate("Goal")}
                 disabled={loading}
               />
             </View>

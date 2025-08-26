@@ -271,6 +271,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 import Colors from "../../component/colors";
 import CustomTextInput from "../../component/textinput";
